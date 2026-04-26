@@ -1,0 +1,16 @@
+{
+  "name": "Avocat Bogdan Constantin Tănase",
+  "short_name": "Avocat Tănase",
+  "description": "Cabinet de avocat în Bacău, Baroul Bacău. Drept civil, penal, dreptul familiei, divorț, partaj, ordin de protecție.",
+  "lang": "ro-RO",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EF",
+  "theme_color": "#FAF6EF",
+  "icons": [
+    { "src": "logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "logo.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" }
+  ]
+}
