@@ -131,7 +131,7 @@
   enableParallax();
   isDesktop.addEventListener('change', enableParallax, { signal });
 
-  // Contact form: AJAX submission via FormSubmit, with graceful fallback
+  // Contact form: AJAX submission to send.php, with graceful fallback
   // to a normal POST navigation if fetch is unavailable.
   const form = $('#contact-form');
   if (form) {
@@ -156,25 +156,17 @@
 
       e.preventDefault();
 
-      // FormSubmit AJAX endpoint:
-      //   email form:  https://formsubmit.co/<email>      -> https://formsubmit.co/ajax/<email>
-      //   hashed form: https://formsubmit.co/el/<hash>    -> https://formsubmit.co/ajax/<hash>
-      const action = form.getAttribute('action') || '';
-      const endpoint = action
-        .replace('https://formsubmit.co/el/', 'https://formsubmit.co/ajax/')
-        .replace(/^https:\/\/formsubmit\.co\/(?!ajax\/)/, 'https://formsubmit.co/ajax/');
-
       setStatus('Se trimite mesajul...', null);
       if (submitBtn) submitBtn.disabled = true;
 
       try {
-        const res = await fetch(endpoint, {
+        const res = await fetch(form.action, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: new FormData(form)
         });
         const json = await res.json().catch(() => ({}));
-        const ok = res.ok && (json.success === true || json.success === 'true');
+        const ok = res.ok && json.success === true;
 
         if (ok) {
           form.reset();

@@ -3,10 +3,46 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.avocatbogdantanase.ro/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ro-RO" href="https://www.avocatbogdantanase.ro/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.avocatbogdantanase.ro/"/>
+  </url>
+  <url>
+    <loc>https://www.avocatbogdantanase.ro/servicii/avocat-divort-bacau.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.avocatbogdantanase.ro/servicii/divort-cu-copii-minori.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.avocatbogdantanase.ro/servicii/partaj-dupa-divort.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.avocatbogdantanase.ro/servicii/ordin-de-protectie.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.avocatbogdantanase.ro/servicii/plangere-contraventionala.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.avocatbogdantanase.ro/servicii/dosare-penale.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

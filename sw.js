@@ -2,16 +2,16 @@
 // Strategy: cache-first for static assets, network-first for navigation
 // requests with offline.html fallback. Bumps cache name to invalidate.
 
-const CACHE = 'abct-v5';
+const CACHE = 'abct-v8';
 const PRECACHE = [
   './',
   'index.html',
-  'styles.css',
-  'script.js',
+  'assets/css/styles.css',
+  'assets/js/script.js',
   'offline.html',
-  'logo.png',
+  'assets/img/logo.png',
   'favicon.ico',
-  'avocat-bogdan-tanase.png',
+  'assets/img/avocat-bogdan-tanase.png',
   'site.webmanifest'
 ];
 
