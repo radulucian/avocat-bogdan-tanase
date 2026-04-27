@@ -428,7 +428,10 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contact-form" novalidate>
+      <form class="contact-form" id="contact-form"
+            action="https://formsubmit.co/el/zijiwu"
+            method="POST"
+            novalidate>
         <h3>Trimite un mesaj</h3>
         <p class="form-help">Răspund în cel mai scurt timp. Pentru urgențe, te rog să suni direct.</p>
 
@@ -452,6 +455,13 @@
           <input type="checkbox" name="consimtamant" required>
           <span>Sunt de acord cu prelucrarea datelor în scopul soluționării solicitării.</span>
         </label>
+
+        <input type="hidden" name="_subject" value="Solicitare nouă de pe avocatbogdantanase.ro">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" value="Bună ziua, am primit solicitarea dumneavoastră și voi reveni cu un răspuns în cel mai scurt timp. Pentru situații urgente, mă puteți contacta telefonic la +40 745 025 701. Cu stimă, av. Bogdan Constantin Tănase.">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+
         <button class="btn btn-primary" type="submit">Trimite mesajul</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>

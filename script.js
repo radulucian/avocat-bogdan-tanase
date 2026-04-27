@@ -131,36 +131,59 @@
   enableParallax();
   isDesktop.addEventListener('change', enableParallax, { signal });
 
-  // Contact form: mailto fallback (no backend)
+  // Contact form: AJAX submission via FormSubmit, with graceful fallback
+  // to a normal POST navigation if fetch is unavailable.
   const form = $('#contact-form');
   if (form) {
     const status = form.querySelector('.form-status');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    const setStatus = (text, kind) => {
+      if (!status) return;
+      status.textContent = text;
+      status.classList.remove('is-ok', 'is-err');
+      if (kind) status.classList.add(kind);
+    };
+
+    form.addEventListener('submit', async (e) => {
       if (!form.checkValidity()) {
+        e.preventDefault();
         form.reportValidity();
         return;
       }
-      const data = new FormData(form);
-      const nume = String(data.get('nume') || '').trim();
-      const tel = String(data.get('telefon') || '').trim();
-      const email = String(data.get('email') || '').trim();
-      const mesaj = String(data.get('mesaj') || '').trim();
-      const subject = `Solicitare consultație - ${nume}`;
-      const body = [
-        `Nume: ${nume}`,
-        `Telefon: ${tel}`,
-        email ? `Email: ${email}` : null,
-        '',
-        'Mesaj:',
-        mesaj
-      ].filter(Boolean).join('\n');
-      const href = `mailto:bogdan@avocatbogdantanase.ro?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = href;
-      if (status) {
-        status.textContent = 'Se deschide aplicația de email pentru trimiterea mesajului.';
-        status.classList.remove('is-err');
-        status.classList.add('is-ok');
+
+      if (typeof fetch !== 'function') return;
+
+      e.preventDefault();
+
+      const action = form.getAttribute('action') || '';
+      const endpoint = action.replace(
+        'https://formsubmit.co/',
+        'https://formsubmit.co/ajax/'
+      );
+
+      setStatus('Se trimite mesajul...', null);
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        const json = await res.json().catch(() => ({}));
+        const ok = res.ok && (json.success === true || json.success === 'true');
+
+        if (ok) {
+          form.reset();
+          setStatus('Mesajul a fost trimis. Vă mulțumesc, vă voi contacta în cel mai scurt timp.', 'is-ok');
+        } else {
+          throw new Error(json.message || 'submit_failed');
+        }
+      } catch (err) {
+        setStatus('Mesajul nu a putut fi trimis. Vă rog încercați din nou sau sunați la +40 745 025 701.', 'is-err');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     }, { signal });
   }
