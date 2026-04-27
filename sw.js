@@ -2,7 +2,7 @@
 // Strategy: cache-first for static assets, network-first for navigation
 // requests with offline.html fallback. Bumps cache name to invalidate.
 
-const CACHE = 'abct-v4';
+const CACHE = 'abct-v5';
 const PRECACHE = [
   './',
   'index.html',

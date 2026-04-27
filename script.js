@@ -156,11 +156,13 @@
 
       e.preventDefault();
 
+      // FormSubmit AJAX endpoint:
+      //   email form:  https://formsubmit.co/<email>      -> https://formsubmit.co/ajax/<email>
+      //   hashed form: https://formsubmit.co/el/<hash>    -> https://formsubmit.co/ajax/<hash>
       const action = form.getAttribute('action') || '';
-      const endpoint = action.replace(
-        'https://formsubmit.co/',
-        'https://formsubmit.co/ajax/'
-      );
+      const endpoint = action
+        .replace('https://formsubmit.co/el/', 'https://formsubmit.co/ajax/')
+        .replace(/^https:\/\/formsubmit\.co\/(?!ajax\/)/, 'https://formsubmit.co/ajax/');
 
       setStatus('Se trimite mesajul...', null);
       if (submitBtn) submitBtn.disabled = true;
