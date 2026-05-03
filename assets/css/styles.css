@@ -462,7 +462,7 @@ body.menu-open {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: auto;
   display: flex;
   align-items: center;
   isolation: isolate;
@@ -501,8 +501,9 @@ body.menu-open {
   background-position: right 90%;
   background-size: contain;
   opacity: 0.25;
-  filter: saturate(70%) contrast(92%) blur(2px);
+  filter: saturate(70%) contrast(92%);
   will-change: transform;
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -519,6 +520,16 @@ body.menu-open {
         color-mix(in oklab, var(--bg) 85%, transparent) 0%,
         color-mix(in oklab, var(--bg) 50%, transparent) 55%,
         color-mix(in oklab, var(--bg) 15%, transparent) 100%);
+  }
+}
+
+@media (min-width: 960px) {
+  .hero {
+    min-height: 100svh;
+  }
+  
+  .hero-layer {
+    display: block;
   }
 }
 
