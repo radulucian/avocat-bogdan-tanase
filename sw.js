@@ -42,7 +42,7 @@ self.addEventListener('fetch', (event) => {
         .then((res) => {
           if (sameOrigin && res.ok) {
             const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => { });
           }
           return res;
         })
@@ -60,7 +60,7 @@ self.addEventListener('fetch', (event) => {
         return fetch(req).then((res) => {
           if (res.ok) {
             const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => { });
           }
           return res;
         }).catch(() => cached);
@@ -75,7 +75,7 @@ self.addEventListener('fetch', (event) => {
       fetch(req).then((res) => {
         if (res.ok) {
           const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+          caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => { });
         }
         return res;
       }).catch(() => cached)
