@@ -661,6 +661,12 @@ body.menu-open {
   }
 }
 
+@media (min-width: 960px) {
+  .scroll-indicator {
+    bottom: 4.5rem;
+  }
+}
+
 /* ---------- Despre ---------- */
 .despre {
   background: var(--surface);
