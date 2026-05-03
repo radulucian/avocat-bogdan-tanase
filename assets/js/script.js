@@ -79,6 +79,12 @@
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
       if (!id || id === '#' || id.length < 2) return;
+      if (id === '#top') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        return;
+      }
+      
       const target = document.getElementById(id.slice(1));
       if (!target) return;
       e.preventDefault();
