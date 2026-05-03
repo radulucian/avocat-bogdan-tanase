@@ -653,7 +653,7 @@ body.menu-open {
 
 @media (min-width: 768px) {
   .hero {
-    padding-bottom: 5.5rem;
+    padding-bottom: 8rem;
   }
 
   .scroll-indicator {
