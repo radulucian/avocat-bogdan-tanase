@@ -467,7 +467,7 @@ body.menu-open {
   align-items: center;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(3rem, 10vh, 6rem);
+  padding-block: 1.5rem 3rem;
 }
 
 .hero-bg {
@@ -523,9 +523,10 @@ body.menu-open {
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 960px) and (hover: hover) and (pointer: fine) {
   .hero {
     min-height: 100svh;
+    padding-block: clamp(3rem, 10vh, 6rem);
   }
   
   .hero-layer {
@@ -651,6 +652,10 @@ body.menu-open {
 }
 
 @media (min-width: 768px) {
+  .hero {
+    padding-bottom: 5.5rem;
+  }
+
   .scroll-indicator {
     display: block;
   }
