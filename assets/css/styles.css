@@ -541,8 +541,8 @@ body.menu-open {
   order: -1;
   width: min(100%, 420px);
   margin-inline: auto;
-  border-radius: clamp(16px, 2.4vw, 22px);
-  padding: 0.45rem;
+  border-radius: clamp(20px, 4vw, 24px);
+  padding: 0.55rem;
   background: color-mix(in oklab, var(--surface) 96%, transparent);
   border: 1px solid color-mix(in oklab, var(--text) 10%, var(--border));
   box-shadow: 0 14px 30px rgba(20, 20, 26, 0.12);
@@ -552,7 +552,7 @@ body.menu-open {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: clamp(12px, 2vw, 18px);
+  border-radius: clamp(16px, 3.2vw, 20px);
 }
 
 .hero-content {
