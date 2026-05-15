@@ -266,10 +266,8 @@ p b {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in oklab, var(--header-bg) 92%, transparent);
+  background: var(--header-bg);
   color: var(--header-fg);
-  backdrop-filter: saturate(140%) blur(12px);
-  -webkit-backdrop-filter: saturate(140%) blur(12px);
   border-block-end: 1px solid transparent;
   transition: background 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
   padding-top: env(safe-area-inset-top);
@@ -425,9 +423,12 @@ p b {
 }
 
 .header-cta.btn-primary {
+  min-height: 38px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.88rem;
   background: var(--header-fg);
   color: var(--header-bg);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .header-cta.btn-primary:hover {
@@ -663,9 +664,7 @@ body.menu-open {
   width: min(100%, 420px);
   margin-inline: auto;
   border-radius: 24px;
-  padding: 8px;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
+  border: 2px solid var(--border);
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
@@ -674,7 +673,6 @@ body.menu-open {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 18px;
   display: block;
 }
 
@@ -849,20 +847,17 @@ body.menu-open {
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
+  border: 2px solid var(--border);
   box-shadow: var(--shadow-md);
   max-width: 420px;
   margin-inline: auto;
   width: 100%;
-  padding: 8px;
 }
 
 .despre-photo img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 18px;
 }
 
 .despre-tags {
@@ -1377,10 +1372,11 @@ body.menu-open {
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--surface-2);
-  border-top: 1px solid var(--border);
-  padding-block: 3rem 1.5rem;
-  margin-top: 2rem;
+  background: #191918;
+  color: #F5EFE3;
+  border-top: 1px solid rgba(245, 239, 227, 0.1);
+  padding-block: 4rem 2rem;
+  margin-top: 4rem;
 }
 
 .footer-grid {
@@ -1397,14 +1393,15 @@ body.menu-open {
 
 .site-footer h4 {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
-  margin-bottom: 0.6rem;
-  color: var(--text);
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
 }
 
 .site-footer p {
-  color: var(--muted);
+  color: #D1D1D1;
   font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 .footer-links {
@@ -1416,11 +1413,11 @@ body.menu-open {
 }
 
 .footer-links a {
-  color: var(--muted);
+  color: #D1D1D1;
 }
 
 .footer-links a:hover {
-  color: var(--accent);
+  color: #FFFFFF;
 }
 
 .footer-bottom {
@@ -1429,16 +1426,26 @@ body.menu-open {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #A0A0A0;
   font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: #D1D1D1;
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+.site-footer a:hover {
+  color: #FFFFFF;
 }
 
 .back-top {
   font-weight: 600;
-  color: var(--accent-strong);
+  color: #FFFFFF !important;
 }
 
 /* ---------- Anchor scroll offsets ---------- */
