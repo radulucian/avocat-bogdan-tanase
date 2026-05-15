@@ -37,41 +37,47 @@
   window.addEventListener('resize', onScrollState, { passive: true, signal });
 
   // Mobile menu (dialog)
-  const menu = $('#mobile-menu');
-  const toggleBtn = $('.menu-toggle');
-  const closeBtn = $('.menu-close');
+  const menu = document.getElementById('mobile-menu');
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const closeBtn = document.querySelector('.menu-close');
 
   const openMenu = () => {
     if (!menu) return;
+    document.body.classList.add('menu-open');
     if (typeof menu.showModal === 'function') {
-      try { menu.showModal(); } catch { menu.setAttribute('open', ''); }
+      try { menu.showModal(); } catch (e) { menu.setAttribute('open', ''); }
     } else {
       menu.setAttribute('open', '');
     }
-    document.body.classList.add('menu-open');
     toggleBtn?.setAttribute('aria-expanded', 'true');
   };
+
   const closeMenu = () => {
     if (!menu) return;
-    if (menu.open && typeof menu.close === 'function') menu.close();
-    else menu.removeAttribute('open');
     document.body.classList.remove('menu-open');
+    if (typeof menu.close === 'function' && menu.hasAttribute('open')) {
+      try { menu.close(); } catch (e) { menu.removeAttribute('open'); }
+    } else {
+      menu.removeAttribute('open');
+    }
     toggleBtn?.setAttribute('aria-expanded', 'false');
   };
 
-  toggleBtn?.addEventListener('click', openMenu, { signal });
-  closeBtn?.addEventListener('click', closeMenu, { signal });
-  menu?.addEventListener('click', (e) => {
-    const rect = menu.getBoundingClientRect();
-    const inside =
-      e.clientX >= rect.left && e.clientX <= rect.right &&
-      e.clientY >= rect.top && e.clientY <= rect.bottom;
-    if (!inside) closeMenu();
-  }, { signal });
-  menu?.addEventListener('cancel', (e) => { e.preventDefault(); closeMenu(); }, { signal });
+  if (toggleBtn) toggleBtn.onclick = openMenu;
+  if (closeBtn) closeBtn.onclick = closeMenu;
 
-  $$('#mobile-menu [data-close]').forEach((a) => {
-    a.addEventListener('click', closeMenu, { signal });
+  if (menu) {
+    menu.onclick = (e) => {
+      if (e.target === menu) closeMenu();
+    };
+    menu.oncancel = (e) => {
+      e.preventDefault();
+      closeMenu();
+    };
+  }
+
+  document.querySelectorAll('#mobile-menu [data-close]').forEach((a) => {
+    a.onclick = closeMenu;
   });
 
   // Smooth anchors with header offset (graceful enhancement)

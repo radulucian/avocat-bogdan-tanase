@@ -450,6 +450,7 @@ p b {
 
 .menu-toggle span {
   display: block;
+  width: 20px;
   height: 2px;
   background: var(--header-fg);
   border-radius: 2px;
@@ -516,7 +517,8 @@ p b {
 .mobile-menu nav {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 2rem;
 }
 
 .mobile-menu ul {
@@ -659,18 +661,20 @@ body.menu-open {
   order: -1;
   width: min(100%, 420px);
   margin-inline: auto;
-  border-radius: clamp(20px, 4vw, 24px);
-  padding: 0.55rem;
-  background: color-mix(in oklab, var(--surface) 96%, transparent);
-  border: 1px solid color-mix(in oklab, var(--text) 10%, var(--border));
-  box-shadow: 0 14px 30px rgba(20, 20, 26, 0.12);
+  border-radius: 24px;
+  padding: 8px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
 }
 
 .hero-portrait img {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: clamp(16px, 3.2vw, 20px);
+  border-radius: 18px;
+  display: block;
 }
 
 .hero-content {
@@ -842,19 +846,22 @@ body.menu-open {
 
 .despre-photo {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: 24px;
   overflow: hidden;
-  background: var(--accent-soft);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
   box-shadow: var(--shadow-md);
   max-width: 420px;
   margin-inline: auto;
   width: 100%;
+  padding: 8px;
 }
 
 .despre-photo img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 18px;
 }
 
 .despre-tags {
