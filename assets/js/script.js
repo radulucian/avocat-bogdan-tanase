@@ -104,7 +104,13 @@
   });
 
   // Reveal on scroll
-  const revealTargets = $$('.section, .card, .value, .hero-meta');
+  // We exclude .section on subpages (service pages) so content is visible immediately.
+  const isSubpage = window.location.pathname.includes('/servicii/') || window.location.pathname.includes('despre-mine');
+  const revealSelector = isSubpage 
+    ? '.card, .value, .hero-meta' 
+    : '.section, .card, .value, .hero-meta';
+    
+  const revealTargets = $$(revealSelector);
   revealTargets.forEach((el) => el.classList.add('reveal'));
   if ('IntersectionObserver' in window && !reduceMotion) {
     const io = new IntersectionObserver((entries) => {
