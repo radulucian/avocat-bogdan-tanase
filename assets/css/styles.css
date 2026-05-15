@@ -300,7 +300,8 @@ p b {
 
 .nav-desktop ul {
   display: flex;
-  gap: 1.6rem;
+  align-items: center;
+  gap: 0.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -309,8 +310,9 @@ p b {
 .nav-desktop a {
   color: var(--header-fg);
   font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.4rem 0;
+  font-size: 0.88rem;
+  padding: 0.25rem 0.6rem;
+  text-align: left !important;
   position: relative;
 }
 
@@ -319,7 +321,7 @@ p b {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  height: 2px;
+  height: 1px;
   background: var(--header-fg);
   transform: scaleX(0);
   transform-origin: left;
@@ -329,6 +331,92 @@ p b {
 .nav-desktop a:hover::after,
 .nav-desktop a:focus-visible::after {
   transform: scaleX(1);
+}
+
+/* ---------- Dropdown ---------- */
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(8px);
+  min-width: 190px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0;
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s var(--ease);
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+}
+
+.dropdown::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown li {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.dropdown a {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.15rem 0.75rem !important;
+  text-align: left !important;
+  color: var(--text) !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background 0.2s var(--ease);
+  white-space: nowrap;
+}
+
+.dropdown a::after {
+  display: none !important;
+}
+
+.dropdown a:hover {
+  background: var(--accent-soft);
+  color: var(--accent-strong) !important;
+}
+
+.has-dropdown > a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.has-dropdown > a svg {
+  transition: transform 0.2s var(--ease);
+}
+
+.has-dropdown:hover > a svg {
+  transform: rotate(180deg);
 }
 
 .header-cta {
@@ -442,10 +530,11 @@ p b {
 
 .mobile-menu a {
   display: block;
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
   color: var(--text);
-  padding: 0.7rem 0;
+  padding: 0.6rem 0;
+  text-align: left;
   border-bottom: 1px solid var(--border);
 }
 
