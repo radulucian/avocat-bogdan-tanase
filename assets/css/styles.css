@@ -1668,6 +1668,10 @@ section[id],
 }
 
 /* ---------- Prose (long-form content) ---------- */
+.page-hero + .section {
+  padding-block-start: 0.5rem;
+}
+
 .prose {
   max-width: 760px;
   margin-inline: auto;
