@@ -409,6 +409,7 @@ p b {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  transform: translateY(1px);
 }
 
 .has-dropdown > a svg {
