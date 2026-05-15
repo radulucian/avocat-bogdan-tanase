@@ -540,23 +540,27 @@ p b {
 
 .mobile-menu-footer {
   display: flex;
-  gap: 0.75rem;
-  padding-top: 1.5rem;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
   margin-top: auto;
 }
 
 .mobile-action-btn {
-  flex: 1;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem;
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
   border: none !important;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s var(--ease);
+}
+
+.mobile-action-btn:active {
+  transform: scale(0.92);
 }
 
 .mobile-action-btn.whatsapp {
