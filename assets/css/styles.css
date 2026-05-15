@@ -1591,15 +1591,9 @@ section[id],
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: 
-    url("../img/logo.png"),
-    url("../img/legal_background_left.png");
-  background-position: 
-    right 0 bottom 0, 
-    left center;
-  background-size: 
-    clamp(100px, 15vw, 180px) auto, 
-    cover;
+  background-image: url("../img/legal_background_left.png");
+  background-position: left center;
+  background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.05;
   filter: saturate(0.1) contrast(100%);
