@@ -62,6 +62,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -675,31 +676,57 @@ body.menu-open {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center 30%;
   display: block;
 }
 
 .hero-content {
+  width: 100%;
   max-width: 720px;
+  min-width: 0;
 }
 
 .hero-logo-inline {
   display: inline-block;
-  height: clamp(60px, 9.5vw, 85px);
+  vertical-align: middle;
+  height: clamp(40px, 6.5vw, 75px);
   width: auto;
+  max-width: 38%;
+  flex-shrink: 0;
+  object-fit: contain;
+  margin-left: auto;
+  transition: height 0.2s var(--ease);
 }
 
 .hero .eyebrow {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.7rem;
+  gap: clamp(0.35rem, 1.5vw, 0.6rem);
+  font-size: clamp(0.62rem, 1.6vw, 0.76rem);
+  letter-spacing: 0.08em;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hero .eyebrow::before {
-  content: "";
-  inline-size: 28px;
-  block-size: 1px;
-  background: currentColor;
-  opacity: 0.7;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hero .eyebrow {
+    letter-spacing: 0.15em;
+  }
+
+  .hero .eyebrow::before {
+    display: block;
+    content: "";
+    inline-size: 28px;
+    block-size: 1px;
+    background: currentColor;
+    opacity: 0.7;
+  }
 }
 
 .hero h1 {
@@ -1627,7 +1654,7 @@ section[id],
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
   color: var(--text);
-  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   line-height: 1.15;
   font-weight: 700;
 }
@@ -1775,6 +1802,146 @@ section[id],
   flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: center;
+}
+
+/* ---------- About Hero Layout ---------- */
+.about-hero {
+  position: relative;
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+}
+
+.about-hero::before {
+  display: none !important;
+}
+
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.about-hero-portrait {
+  width: 100%;
+  max-width: 320px;
+  margin-inline: auto;
+}
+
+.about-hero-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.about-hero-img:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.about-hero-content {
+  text-align: center;
+  width: 100%;
+}
+
+.about-hero-content h1,
+.about-hero-content .lede {
+  text-align: center !important;
+  margin-inline: auto !important;
+  max-width: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .about-hero-inner {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .about-hero-content {
+    text-align: left;
+  }
+
+  .about-hero-content h1,
+  .about-hero-content .lede {
+    text-align: left !important;
+    margin-inline: 0 auto !important;
+  }
+
+  .about-hero-content .lede {
+    max-width: 60ch !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-hero-inner {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+/* ---------- Floating Brand Logo (Bottom Right Monogram) ---------- */
+.floating-logo {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 39;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
+  pointer-events: auto;
+}
+
+.floating-logo img {
+  display: block;
+  width: 22px;
+  height: auto;
+  opacity: 0.85;
+  filter: var(--logo-filter, none);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.floating-logo:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: color-mix(in oklab, var(--accent-soft) 25%, var(--surface));
+}
+
+.floating-logo:hover img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* Sibling combinator to shift FAB stack up when floating logo is present */
+.floating-logo ~ .fab-stack {
+  bottom: 74px;
+  right: 12px;
+}
+
+@media (max-width: 768px) {
+  .floating-logo {
+    right: 12px;
+    bottom: 12px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .floating-logo img {
+    width: 19px;
+  }
+
+  .floating-logo ~ .fab-stack {
+    bottom: 64px;
+    right: 6px;
+  }
 }
 
 /* ---------- Print ---------- */
