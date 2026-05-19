@@ -1811,7 +1811,7 @@ section[id],
 }
 
 .about-hero::before {
-  display: block !important;
+  display: none !important;
 }
 
 .about-hero-inner {
