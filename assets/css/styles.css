@@ -1884,63 +1884,45 @@ section[id],
 /* ---------- Floating Brand Logo (Bottom Right Monogram) ---------- */
 .floating-logo {
   position: fixed;
-  right: 15px;
-  bottom: 15px;
+  right: 10px;
+  bottom: 10px;
   z-index: 39;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-md);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
+  display: block;
+  transition: transform 0.3s var(--ease);
   pointer-events: auto;
 }
 
 .floating-logo img {
   display: block;
-  width: 22px;
+  width: 92px;
   height: auto;
-  opacity: 0.85;
+  opacity: 1;
   filter: var(--logo-filter, none);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
 .floating-logo:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  background: color-mix(in oklab, var(--accent-soft) 25%, var(--surface));
-}
-
-.floating-logo:hover img {
-  opacity: 1;
-  transform: scale(1.08);
+  transform: translateY(-3px);
 }
 
 /* Sibling combinator to shift FAB stack up when floating logo is present */
 .floating-logo ~ .fab-stack {
-  bottom: 74px;
-  right: 12px;
+  bottom: 112px;
+  right: 16px;
 }
 
 @media (max-width: 768px) {
   .floating-logo {
-    right: 12px;
-    bottom: 12px;
-    width: 42px;
-    height: 42px;
+    right: 10px;
+    bottom: 10px;
   }
 
   .floating-logo img {
-    width: 19px;
+    width: 72px;
   }
 
   .floating-logo ~ .fab-stack {
-    bottom: 64px;
-    right: 6px;
+    bottom: 92px;
+    right: 10px;
   }
 }
 
