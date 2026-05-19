@@ -682,6 +682,12 @@ body.menu-open {
   max-width: 720px;
 }
 
+.hero-logo-inline {
+  display: inline-block;
+  height: clamp(60px, 9.5vw, 85px);
+  width: auto;
+}
+
 .hero .eyebrow {
   display: flex;
   align-items: center;
@@ -1011,6 +1017,17 @@ body.menu-open {
     text-align: left;
     margin: 0;
   }
+}
+
+.faq-logo {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin-top: 1.75rem;
+  margin-inline: auto;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
 }
 
 .faq-list details {
